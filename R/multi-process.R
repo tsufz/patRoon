@@ -53,10 +53,13 @@ makeCommandList <- function(commandQueue, cmdInds, sucDir)
     return(ret)
 }
 
-initCommand <- function(commandQueue, cmdInds, sucDir, printOutput, printError)
+initCommand <- function(commandQueue, cmdInds, workDir, sucDir, printOutput, printError)
 {
     procArgs <- makeCommandList(commandQueue, cmdInds, sucDir)
     procArgs <- c(procArgs, list(cleanup_tree = TRUE, supervise = TRUE))
+
+    if (!is.null(workDir))
+        procArgs <- c(procArgs, list(wd = workDir))
 
     if (printOutput)
         procArgs[["stdout"]] <- "|"
@@ -202,6 +205,7 @@ defMultiProcErrorHandler <- function(cmd, exitStatus, ...)
 #'   retries)}. The \code{exitStatus} argument is the exit code of the command
 #'   (may be \code{NA} in rare cases this is unknown). Other arguments are as
 #'   \code{timeoutHandler}.
+#' @param workDir Sets the current working directory (if not \code{NULL}).
 #' @param procTimeout The maximum time a process may consume before a timeout
 #'   occurs (in seconds). Set to \code{NULL} to disable
 #'   timeouts.
@@ -220,7 +224,8 @@ defMultiProcErrorHandler <- function(cmd, exitStatus, ...)
 executeMultiProcess <- function(commandQueue, finishHandler,
                                 timeoutHandler = function(...) TRUE,
                                 errorHandler = defMultiProcErrorHandler,
-                                procTimeout = NULL, printOutput = FALSE, printError = FALSE,
+                                workDir = NULL, procTimeout = NULL,
+                                printOutput = FALSE, printError = FALSE,
                                 showProgress = TRUE, waitTimeout = 50,
                                 maxProcAmount = getOption("patRoon.maxProcAmount"),
                                 batchSize = 1, delayBetweenProc = 0)
@@ -362,7 +367,8 @@ executeMultiProcess <- function(commandQueue, finishHandler,
                     }
 
                     cs <- seq(nextCommand, nextCommand + (ncmd - 1))
-                    runningProcInfo[[pi]] <- initCommand(commandQueue[cs], cs, sucDir, printOutput, printError)
+                    runningProcInfo[[pi]] <- initCommand(commandQueue[cs], cs, workDir, sucDir,
+                                                         printOutput, printError)
                     runningProcs[[pi]] <- do.call(processx::process$new, runningProcInfo[[pi]]$procArgs)
 
                     # printf("started %d-%d on slot %d\n", nextCommand, runningProcInfo[[pi]]$cmdIndRange[2], pi)
