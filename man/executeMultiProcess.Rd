@@ -45,6 +45,8 @@ retries)}. The \code{exitStatus} argument is the exit code of the command
 (may be \code{NA} in rare cases this is unknown). Other arguments are as
 \code{timeoutHandler}.}
 
+\item{workDir}{Sets the current working directory (if not \code{NULL}).}
+
 \item{procTimeout}{The maximum time a process may consume before a timeout
 occurs (in seconds). Set to \code{NULL} to disable
 timeouts.}
