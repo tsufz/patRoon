@@ -98,6 +98,7 @@ setGeneric("ionize", function(obj, sets = NULL) standardGeneric("ionize"))
 setGeneric("suspects", function(pred) standardGeneric("suspects"))
 setGeneric("predictions", function(pred) standardGeneric("predictions"))
 setGeneric("convertToMFDB", function(pred, out) standardGeneric("convertToMFDB"))
+setGeneric("convertToSuspects", function(pred, adduct, tidy = TRUE) standardGeneric("convertToSuspects"))
 
 ### suspect screening
 
