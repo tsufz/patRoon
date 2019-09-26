@@ -40,7 +40,7 @@ adductMZDelta <- function(adduct)
         ret <- -(sum(sapply(adduct@sub, getMZ, charge = adduct@charge)))
     else # [M]
         ret <- getMZ("H", adduct@charge) - getMZ("H", 0) # electron mass
-    
+
     return(ret)
 }
 
