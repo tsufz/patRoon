@@ -128,6 +128,7 @@ Collate:
     'feature_groups.R'
     'EIC-tool.R'
     'RcppExports.R'
+    'TP.R'
     'TP-biotransformer.R'
     'utils-adduct.R'
     'adduct.R'
