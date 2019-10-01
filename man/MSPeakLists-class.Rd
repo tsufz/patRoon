@@ -18,6 +18,8 @@
 \alias{as.data.table,MSPeakLists-method}
 \alias{filter,MSPeakLists-method}
 \alias{plotSpec,MSPeakLists-method}
+\alias{spectrumSimilarity,MSPeakLists-method}
+\alias{spectrumSimilarity}
 \alias{getDefIsolatePrecParams}
 \title{Class containing MS Peak Lists}
 \usage{
@@ -70,6 +72,11 @@
   ...
 )
 
+\S4method{spectrumSimilarity}{MSPeakLists}(obj, groupName1, groupName2,
+  analysis1 = NULL, analysis2 = NULL, MSLevel = 1, doPlot = TRUE,
+  absMzDev = 0.005, relMinIntensity = 10, xlim = NULL, ylim = c(0,
+  100), ...)
+
 getDefIsolatePrecParams(...)
 }
 \arguments{
@@ -79,7 +86,9 @@ getDefIsolatePrecParams(...)
 their index or name, respectively (for the order/names see \code{analyses()/groupNames()}).\cr\cr For \code{[}: Can also be logical to perform logical selection
 (similar to regular vectors). If missing all analyses/feature groups are selected.\cr\cr For \code{[[}: should be a scalar value. If \code{j} is not specified, \code{i} selects by feature groups instead.}
 
-\item{\dots}{Further arguments passed to \code{\link[graphics]{plot}}.}
+\item{\dots}{Further arguments passed to \code{\link[graphics]{plot}}
+(\code{plotSpec}) or \code{\link{SpectrumSimilarity}}
+(\code{spectrumSimilarity}).}
 
 \item{reAverage}{Set to \code{TRUE} to regenerate averaged MS peak lists
 after subsetting analyses.}
@@ -145,6 +154,21 @@ faster.}
 
 \item{xlim, ylim}{Sets the plot size limits used by
 \code{\link[graphics]{plot}}. Set to \code{NULL} for automatic plot sizing.}
+
+\item{groupName1, groupName2}{The names of the feature groups for which the
+comparison should be made.}
+
+\item{analysis1, analysis2}{The name of the analysis for the comparison. If
+\code{NULL} then data from the feature group averaged peak list is used.}
+
+\item{doPlot}{Set to \code{TRUE} to make a head-to-tail plot. Otherwise only
+the similarity will be returned.}
+
+\item{absMzDev}{Maximum deviation for \emph{m/z} alignment (in Da). Sets the
+\code{t} argument of \code{\link{SpectrumSimilarity}}.}
+
+\item{relMinIntensity}{Relative intensity threshold. Sets the \code{b}
+argument of \code{\link{SpectrumSimilarity}}.}
 }
 \value{
 \code{peakLists} returns a nested list containing MS (and MS/MS where
@@ -163,6 +187,9 @@ faster.}
 
 \code{plotSpec} will return a \code{\link[=ggplot2]{ggplot object}}
   if \code{useGGPlot2} is \code{TRUE}.
+
+\code{spectrumSimilarity} returns the same as
+  \code{\link{SpectrumSimilarity}}.
 }
 \description{
 Contains all MS (and MS/MS where available) peak lists for a
@@ -213,6 +240,10 @@ lists. However, since version \samp{1.1}, the resulting feature group lists are
 
 \item \code{plotSpec}: Plots a spectrum using MS or MS/MS peak lists for a
 given feature group.
+
+\item \code{spectrumSimilarity}: Calculates and plots the spectral similarity between
+two spectra. For this the \code{\link{SpectrumSimilarity}} function is used
+of the \CRANpkg{OrgMassSpecR} package.
 }}
 
 \section{Slots}{
