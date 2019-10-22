@@ -144,6 +144,7 @@ Collate:
     'components-nontarget.R'
     'components-ramclustr.R'
     'components-set.R'
+    'utils-components.R'
     'components-tps.R'
     'compounds.R'
     'compounds-cluster.R'

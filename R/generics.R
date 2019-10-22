@@ -58,7 +58,6 @@ setGeneric("spectrumSimilarity", function(obj, groupName1, groupName2,
 setGeneric("componentTable", function(obj) standardGeneric("componentTable"))
 setGeneric("componentInfo", function(obj) standardGeneric("componentInfo"))
 setGeneric("findFGroup", function(obj, fGroup) standardGeneric("findFGroup"))
-setGeneric("plotGraph", function(obj, onlyLinked = TRUE) standardGeneric("plotGraph"))
 setGeneric("generateComponents", function(fGroups, algorithm, ...) standardGeneric("generateComponents"))
 setGeneric("generateComponentsRAMClustR", function(fGroups, ...) standardGeneric("generateComponentsRAMClustR"))
 setGeneric("generateComponentsCAMERA", function(fGroups, ...) standardGeneric("generateComponentsCAMERA"))
@@ -289,6 +288,12 @@ setGeneric("plotChord", function(obj, addSelfLinks = FALSE, addRetMzPlots = TRUE
 #' @templateVar desc plots extracted ion chromatogram(s).
 #' @template generics
 setGeneric("plotEIC", function(obj, ...) standardGeneric("plotEIC"))
+
+#' @templateVar func plotGraph
+#' @templateVar desc Plots an interactive network graph.
+#' @template generics
+#' @param onlyLinked Only plots linked objects if \code{TRUE}.
+setGeneric("plotGraph", function(obj, onlyLinked = TRUE) standardGeneric("plotGraph"))
 
 #' @templateVar func plotInt
 #' @templateVar desc plots the intensity of all contained features.

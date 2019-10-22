@@ -32,63 +32,24 @@ setMethod("initialize", "componentsNT",
 #'   with the \pkg{\link{igraph}} package and rendered with
 #'   \pkg{\link{visNetwork}}.
 #'
-#' @param obj The \code{componentsRC} object to plot.
-#' @param onlyLinked If \code{TRUE} then only series with links are plotted.
-#'
-#' @return \code{plotGraph} returns the result of \code{\link{visNetwork}}.
-#'
-#' @references \addCitations{igraph}{1} \cr \cr \addCitations{visNetwork}{1}
-#' @aliases plotGraph
+#' @param obj The \code{componentsNT} object to plot.
+#' 
+#' @template plotGraph
+#' 
 #' @export
 setMethod("plotGraph", "componentsNT", function(obj, onlyLinked)
 {
     checkmate::assertFlag(onlyLinked)
     
-    cInfo <- copy(obj@componentInfo)
-    cInfo[, id := .I]
-    cInfo[, linksIDs := lapply(links, match, table = names(obj))]
-    allLinks <- unique(unlist(cInfo$linksIDs))
-    cInfo <- cInfo[lengths(links) > 0 | id %in% allLinks]
-    
-    if (nrow(cInfo) == 0)
-    {
-        if (onlyLinked)
-            stop("No component links in your data and onlyLinked = TRUE, so nothing to show.")
-        nodes <- data.table(id = character(), label = character(), group = numeric())
-        edges <- data.table(from = character(), to = character())
-    }
-    else
-    {
-        edges <- rbindlist(mapply(cInfo$name, cInfo$linksIDs, FUN = function(n, l)
-        {
-            data.table::data.table(from = n, to = cInfo$name[match(unlist(l), cInfo$id)])
-        }, SIMPLIFY = FALSE))
-        
-        graph <- igraph::simplify(igraph::graph_from_data_frame(edges, directed = FALSE))
-        fc <- igraph::fastgreedy.community(graph)
-        
-        data <- visNetwork::toVisNetworkData(graph)
-        nodes <- as.data.table(data$nodes)
-        nodes[, group := fc$membership]
-        edges <- data$edges
-    }
+    cInfo <- componentInfo(obj)
+    cTable <- componentTable(obj)
 
-    if (!onlyLinked)
-    {
-        unNodes <- data.table(id = setdiff(names(obj), cInfo$name), group = 0)
-        unNodes[, label := id]
-        nodes <- rbind(nodes, unNodes)
-    }
-    
-    nodes[, shape := "circle"]
+    hsFGroups <- sapply(cTable, function(cmp) paste0(cmp$group, collapse = ", "))
+    hsRGroups <- sapply(cTable, function(cmp) paste0(unique(cmp$rGroup), collapse = ", "))
+    titles <- sprintf("<b>%s</b> (RT: %.2f; m/z: %.4f; #%d)<br>fGroups: <i>%s</i><br>rGroups: <i>%s</i>",
+                      names(obj), cInfo$rt_increment, cInfo$mz_increment, cInfo$size, hsFGroups, hsRGroups)
 
-    infos <- obj@componentInfo[match(nodes$id, name), c("rt_increment", "mz_increment", "size"), with = FALSE]
-    hsFGroups <- sapply(nodes$id, function(cmp) paste0(unique(obj[[cmp]]$group), collapse = ", "))
-    hsRGroups <- sapply(nodes$id, function(cmp) paste0(unique(obj[[cmp]]$rGroup), collapse = ", "))
-    nodes[, title := sprintf("<b>%s</b> (RT: %.2f; m/z: %.4f; #%d)<br>fGroups: <i>%s</i><br>rGroups: <i>%s</i>",
-                             nodes$label, infos$rt_increment, infos$mz_increment, infos$size, hsFGroups, hsRGroups)]
-    
-    visNetwork::visNetwork(nodes = nodes, edges = edges)
+    makeGraph(obj, onlyLinked, titles)
 })
 
 
