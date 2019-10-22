@@ -74,8 +74,8 @@
 
 \S4method{spectrumSimilarity}{MSPeakLists}(obj, groupName1, groupName2,
   analysis1 = NULL, analysis2 = NULL, MSLevel = 1, doPlot = TRUE,
-  absMzDev = 0.005, relMinIntensity = 10, xlim = NULL, ylim = c(0,
-  100), ...)
+  absMzDev = 0.002, relMinIntensity = 10, omitPrecursor = FALSE,
+  mzShift = 0, xlim = NULL, ylim = c(0, 100), ...)
 
 getDefIsolatePrecParams(...)
 }
@@ -169,6 +169,12 @@ the similarity will be returned.}
 
 \item{relMinIntensity}{Relative intensity threshold. Sets the \code{b}
 argument of \code{\link{SpectrumSimilarity}}.}
+
+\item{omitPrecursor}{If \code{TRUE} then the precursor mass peak is removed
+prior the comparison.}
+
+\item{mzShift}{A number that is added to all mass peaks of the second peak
+list. Useful for \emph{e.g.} comparing precursor/parent MS/MS peaks.}
 }
 \value{
 \code{peakLists} returns a nested list containing MS (and MS/MS where
