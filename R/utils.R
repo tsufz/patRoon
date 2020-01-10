@@ -549,3 +549,55 @@ ReduceWithArgs <- function(f, x, ..., fixedArgs = list())
     
     return(ret)
 }
+
+babelConvert <- function(input, inFormat, outFormat, mustWork = TRUE)
+{
+    # Use batch conversion with a single input/output file. Note that obabel
+    # will stop after an error. This can be overidden, however, then it is
+    # unclear which entries failed. Hence, this option is not used, and when an
+    # error occurs the batch conversion is simply restarted with the subsequent
+    # entry.
+
+    inputFile <- tempfile("obabel_inp", fileext = ".txt")
+    outputFile <- tempfile("obabel_out", fileext = ".txt")
+    doConversion <- function(inp)
+    {
+        cat(inp, file = inputFile, sep = "\n")
+        executeCommand(getCommandWithOptPath("obabel", "obabel"),
+                       c(paste0("-i", inFormat), inputFile,
+                         paste0("-o", outFormat), "-O", outputFile, "-xw"),
+                       stderr = FALSE)
+        # each conversion is followed by a tab (why??) and newline. Read line
+        # by line and remove tab afterwards.
+        ret <- readLines(outputFile)
+        return(trimws(ret, which = "right", whitespace = "\t"))
+    }
+
+    inputLen <- length(input)
+    ret <- character(inputLen)
+    curIndex <- 1
+    while(TRUE)
+    {
+        curRange <- seq(curIndex, inputLen)
+        out <- doConversion(input[curRange])
+        outl <- length(out)
+
+        if (outl > 0)
+            ret[seq(curIndex, curIndex + outl - 1)] <- out
+
+        curIndex <- curIndex + outl + 1
+
+        if (curIndex <= inputLen)
+        {
+            msg <- sprintf("Failed to convert %d ('%s')", curIndex - 1, input[curIndex - 1])
+            if (mustWork)
+                stop(msg)
+            else
+                warning(msg)
+        }
+        else
+            break
+    }
+
+    return(ret)
+}
