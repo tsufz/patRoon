@@ -9,6 +9,7 @@ executeMultiProcess(
   finishHandler,
   timeoutHandler = function(...) TRUE,
   errorHandler = defMultiProcErrorHandler,
+  workDir = NULL,
   procTimeout = NULL,
   printOutput = FALSE,
   printError = FALSE,

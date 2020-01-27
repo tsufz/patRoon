@@ -7,7 +7,6 @@
 \alias{peakLists,MSPeakLists-method}
 \alias{peakLists}
 \alias{averagedPeakLists,MSPeakLists-method}
-\alias{averagedPeakLists}
 \alias{analyses,MSPeakLists-method}
 \alias{groupNames,MSPeakLists-method}
 \alias{length,MSPeakLists-method}
@@ -72,10 +71,22 @@
   ...
 )
 
-\S4method{spectrumSimilarity}{MSPeakLists}(obj, groupName1, groupName2,
-  analysis1 = NULL, analysis2 = NULL, MSLevel = 1, doPlot = TRUE,
-  absMzDev = 0.002, relMinIntensity = 10, omitPrecursor = FALSE,
-  mzShift = 0, xlim = NULL, ylim = c(0, 100), ...)
+\S4method{spectrumSimilarity}{MSPeakLists}(
+  obj,
+  groupName1,
+  groupName2,
+  analysis1 = NULL,
+  analysis2 = NULL,
+  MSLevel = 1,
+  doPlot = TRUE,
+  absMzDev = 0.002,
+  relMinIntensity = 10,
+  omitPrecursor = FALSE,
+  mzShift = 0,
+  xlim = NULL,
+  ylim = c(0, 100),
+  ...
+)
 
 getDefIsolatePrecParams(...)
 }
@@ -287,7 +298,7 @@ names.}
 
   \item \code{maxIsotopes} The maximum number of isotopes to consider. For
   instance, a value of \samp{5} means that \code{M+0} (\emph{i.e.} the
-  monoisotopic peak) till \code{M+5} is considered. All mass peaks outside
+  monoisoptic peak) till \code{M+5} is considered. All mass peaks outside
   this range are removed.
 
   \item \code{mzDefectRange} A two-sized \code{vector} specifying the minimum
@@ -301,7 +312,7 @@ names.}
 
   \item \code{intRange} A two-sized \code{vector} specifying the minimum and
   maximum relative intensity range compared to the precursor. For instance,
-  \code{c(0.001, 2)} removes all peaks that have an intensity below 0.1\% or
+  \code{c(0.001, 2)} removes all peaks that have an intensity below 0.1\% are
   above 200\% of that of the precursor.
 
   \item \code{z} The \code{z} value (\emph{i.e.} absolute charge) to be
