@@ -7,6 +7,7 @@
 \alias{peakLists,MSPeakLists-method}
 \alias{peakLists}
 \alias{averagedPeakLists,MSPeakLists-method}
+\alias{averagedPeakLists}
 \alias{analyses,MSPeakLists-method}
 \alias{groupNames,MSPeakLists-method}
 \alias{length,MSPeakLists-method}
@@ -298,7 +299,7 @@ names.}
 
   \item \code{maxIsotopes} The maximum number of isotopes to consider. For
   instance, a value of \samp{5} means that \code{M+0} (\emph{i.e.} the
-  monoisoptic peak) till \code{M+5} is considered. All mass peaks outside
+  monoisotopic peak) till \code{M+5} is considered. All mass peaks outside
   this range are removed.
 
   \item \code{mzDefectRange} A two-sized \code{vector} specifying the minimum
@@ -312,7 +313,7 @@ names.}
 
   \item \code{intRange} A two-sized \code{vector} specifying the minimum and
   maximum relative intensity range compared to the precursor. For instance,
-  \code{c(0.001, 2)} removes all peaks that have an intensity below 0.1\% are
+  \code{c(0.001, 2)} removes all peaks that have an intensity below 0.1\% or
   above 200\% of that of the precursor.
 
   \item \code{z} The \code{z} value (\emph{i.e.} absolute charge) to be
