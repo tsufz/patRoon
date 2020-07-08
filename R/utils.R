@@ -31,9 +31,13 @@ getMzMLOrMzXMLAnalysisPath <- function(file, path)
 
 mergeAnaSubsetArgWithSets <- function(i, sets, anaInfo)
 {
+    setAna <- anaInfo$analysis[anaInfo$set %in% sets]
     if (!missing(i))
-        assertSubsetArgAndToChr(i, analyses(x))
-    return(union(i, anaInfo$analysis[anaInfo$set %in% sets]))
+    {
+        i <- assertSubsetArgAndToChr(i, anaInfo$analysis)
+        return(union(i, setAna))
+    }
+    return(setAna)
 }
 
 makeFGroupName <- function(id, ret, mz) sprintf("M%.0f_R%.0f_%d", mz, ret, id)
