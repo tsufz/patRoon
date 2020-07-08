@@ -321,6 +321,7 @@ setGeneric("treeCutDynamic", function(obj, maxTreeHeight = 1, deepSplit = TRUE,
                                       minModuleSize = 1, ...) standardGeneric("treeCutDynamic"))
 
 
+setGeneric("getEICsForFGroups", function(fGroups, rtWindow, mzWindow, topMost, onlyPresent) standardGeneric("getEICsForFGroups"))
 setGeneric("checkChromatograms", function(fGroups, mzWindow = 0.005, enabledFGroups = NULL) standardGeneric("checkChromatograms"))
 setGeneric("compoundViewer", function(fGroups, MSPeakLists, compounds) standardGeneric("compoundViewer"))
 setGeneric("reportCSV", function(fGroups, path = "report", reportFGroupsAsRows = TRUE, reportFGroupsAnalysisInfo = TRUE,

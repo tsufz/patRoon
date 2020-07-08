@@ -51,7 +51,7 @@ getEIC <- function(spectra, rtRange, mzRange, MSLevel = 1, precursor = NULL, pre
                                          function(s) sum(s[numGTE(mz, mzRange[1]) & numLTE(mz, mzRange[2]), intensity]))))
 }
 
-getEICsForFGroups <- function(fGroups, rtWindow, mzWindow, topMost, onlyPresent)
+setMethod("getEICsForFGroups", "featureGroups", function(fGroups, rtWindow, mzWindow, topMost, onlyPresent)
 {
     if (length(fGroups) == 0)
         return(list())
@@ -153,7 +153,19 @@ getEICsForFGroups <- function(fGroups, rtWindow, mzWindow, topMost, onlyPresent)
     }
 
     return(EICs)
-}
+})
+
+setMethod("getEICsForFGroups", "featureGroupsSet", function(fGroups, rtWindow, mzWindow, topMost, onlyPresent)
+{
+    ionizedFGroupsList <- sapply(sets(fGroups), ionize, obj = fGroups, simplify = FALSE)
+    EICList <- sapply(ionizedFGroupsList, getEICsForFGroups, rtWindow = rtWindow, mzWindow = mzWindow,
+                      topMost = topMost, onlyPresent = onlyPresent, simplify = FALSE)
+    EICs <- unlist(EICList, recursive = FALSE, use.names = FALSE) # use.names gives combined set/ana name, we just want ana
+    names(EICs) <- unlist(lapply(EICList, names))
+    EICs <- EICs[intersect(analyses(fGroups), names(EICs))] # sync order
+
+    return(EICs)
+})
 
 averageSpectraMZR <- function(spectra, hd, clusterMzWindow, topMost, minIntensityPre,
                               minIntensityPost, avgFun, method, precursor,
