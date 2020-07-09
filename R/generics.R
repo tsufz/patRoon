@@ -40,8 +40,8 @@ setGeneric("getXCMSnExp", function(obj, verbose = TRUE) standardGeneric("getXCMS
 
 ### MS Peak Lists
 
-setGeneric("peakLists", function(obj) standardGeneric("peakLists"))
-setGeneric("averagedPeakLists", function(obj) standardGeneric("averagedPeakLists"))
+setGeneric("peakLists", function(obj, ...) standardGeneric("peakLists"))
+setGeneric("averagedPeakLists", function(obj, ...) standardGeneric("averagedPeakLists"))
 setGeneric("generateMSPeakLists", function(fGroups, algorithm, ...) standardGeneric("generateMSPeakLists"))
 setGeneric("generateMSPeakListsMzR", function(fGroups, algorithm, ...) standardGeneric("generateMSPeakListsMzR"))
 
