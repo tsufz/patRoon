@@ -403,7 +403,7 @@ generateFormulasGenForm <- function(fGroups, MSPeakLists, relMzDev = 5, adduct =
             saveCacheSet("formulasGenForm", formHashes, setHash, cacheDB)
 
         if (length(formTable) > 0)
-            groupFormulas <- generateGroupFormulasByConsensus(formTable, featThreshold, gNames)
+            groupFormulas <- generateGroupFormulasByConsensus(formTable, featThreshold, gNames, "analysis", "anaCoverage")
         else
             groupFormulas <- list()
     }
