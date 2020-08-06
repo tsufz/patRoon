@@ -109,7 +109,7 @@
 
 ## formulas
 - customize/document ranking column order? (only do rank for sirius?)
-
+- getFormInfoList(): take care of consensus results like getPrecursorFormScores()
 
 ## components
 - RC: check spearmans correlation
