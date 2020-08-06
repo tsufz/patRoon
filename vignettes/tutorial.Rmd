@@ -336,7 +336,7 @@ as.data.table(compounds)[, 1:5] # only show first columns for clarity
 
 ```{r plotSpec,fig.width=6,fig.height=3.5,eval=doCompounds}
 plotSpec(mslists, "M186_R265_296", MSLevel = 2)
-plotSpec(formulas, "C6H9N2", "M109_R116_56", MSPeakLists = mslists)
+plotSpec(formulas, "C6H8N2", "M109_R116_56", MSPeakLists = mslists)
 plotSpec(compounds, 1, "M120_R328_81", mslists)
 ```
 

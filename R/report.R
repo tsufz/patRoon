@@ -321,7 +321,7 @@ reportFormulaSpectra <- function(fGroups, path, formulas, topMost, normalizeScor
 
             plotEIC(fGroups[, grp], EICRtWindow, EICMzWindow, retMin, EICTopMost, EICs)
 
-            for (precursor in unique(ft$formula))
+            for (precursor in unique(ft$neutral_formula))
             {
                 # NOTE: layout/mfrow/mfcol doesn't work because of the legend positioning (thinks 2 plots are made...)
 
