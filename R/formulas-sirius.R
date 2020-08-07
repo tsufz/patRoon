@@ -92,12 +92,14 @@ processSIRIUSFormulas <- function(msFName, outPath, cmpName, adduct, hash, isPre
 #'
 #' @rdname formula-generation
 #' @export
-generateFormulasSIRIUS <- function(fGroups, MSPeakLists, relMzDev = 5, adduct = "[M+H]+", elements = "CHNOP",
-                                   profile = "qtof", database = NULL, noise = NULL, cores = NULL, topMost = 100,
-                                   extraOptsGeneral = NULL, extraOptsFormula = NULL, calculateFeatures = TRUE,
-                                   featThreshold = 0.75, verbose = TRUE,
-                                   SIRBatchSize = 0, logPath = file.path("log", "sirius_formulas"),
-                                   maxProcAmount = getOption("patRoon.maxProcAmount"))
+setMethod("generateFormulasSIRIUS", "featureGroups", function(fGroups, MSPeakLists, relMzDev = 5,
+                                                              adduct = "[M+H]+", elements = "CHNOP",
+                                                              profile = "qtof", database = NULL, noise = NULL,
+                                                              cores = NULL, topMost = 100, extraOptsGeneral = NULL,
+                                                              extraOptsFormula = NULL, calculateFeatures = TRUE,
+                                                              featThreshold = 0.75, verbose = TRUE,
+                                                              SIRBatchSize = 0, logPath = file.path("log", "sirius_formulas"),
+                                                              maxProcAmount = getOption("patRoon.maxProcAmount"))
 {
     ac <- checkmate::makeAssertCollection()
     checkmate::assertClass(fGroups, "featureGroups", add = ac)
@@ -160,4 +162,10 @@ generateFormulasSIRIUS <- function(fGroups, MSPeakLists, relMzDev = 5, adduct = 
     }
     
     return(formulas(formulas = groupFormulas, featureFormulas = formTable, algorithm = "sirius"))
-}
+})
+
+setMethod("generateFormulasSIRIUS", "featureGroupsSet", function(fGroups, MSPeakLists, ..., setThreshold = 0.75)
+{
+    setArgs <- assertAndGetMSPLSetsArgs(fGroups, MSPeakLists)
+    generateFormulasSet(fGroups, generateFormulasSIRIUS, ..., setArgs = setArgs, setThreshold = setThreshold)
+})
