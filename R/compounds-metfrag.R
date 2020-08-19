@@ -2,6 +2,7 @@
 #' @include compounds.R
 #' @include mspeaklists.R
 #' @include formulas.R
+#' @include feature_groups-set.R
 NULL
 
 #' Compounds list class for MetFrag results.
@@ -422,16 +423,17 @@ processMFResults <- function(comptab, spec, adduct, db, topMost, lfile = "")
 #'
 #' @rdname compound-generation
 #' @export
-generateCompoundsMetfrag <- function(fGroups, MSPeakLists, method = "CL", logPath = file.path("log", "metfrag"),
-                                     timeout = 300, timeoutRetries = 2, errorRetries = 2, topMost = 100,
-                                     dbRelMzDev = 5, fragRelMzDev = 5, fragAbsMzDev = 0.002, adduct,
-                                     database = "pubchem", extendedPubChem = "auto", chemSpiderToken = "",
-                                     scoreTypes = compoundScorings("metfrag", database, onlyDefault = TRUE)$name,
-                                     scoreWeights = 1.0,
-                                     preProcessingFilters = c("UnconnectedCompoundFilter", "IsotopeFilter"),
-                                     postProcessingFilters = c("InChIKeyFilter"),
-                                     maxCandidatesToStop = 2500, identifiers = NULL, extraOpts = NULL,
-                                     maxProcAmount = getOption("patRoon.maxProcAmount"))
+setMethod("generateCompoundsMetfrag", "featureGroups", function(fGroups, MSPeakLists, method = "CL",
+                                                                logPath = file.path("log", "metfrag"),
+                                                                timeout = 300, timeoutRetries = 2, errorRetries = 2, topMost = 100,
+                                                                dbRelMzDev = 5, fragRelMzDev = 5, fragAbsMzDev = 0.002, adduct,
+                                                                database = "pubchem", extendedPubChem = "auto", chemSpiderToken = "",
+                                                                scoreTypes = compoundScorings("metfrag", database, onlyDefault = TRUE)$name,
+                                                                scoreWeights = 1.0,
+                                                                preProcessingFilters = c("UnconnectedCompoundFilter", "IsotopeFilter"),
+                                                                postProcessingFilters = c("InChIKeyFilter"),
+                                                                maxCandidatesToStop = 2500, identifiers = NULL, extraOpts = NULL,
+                                                                maxProcAmount = getOption("patRoon.maxProcAmount"))
 {
     if (method == "R")
         checkPackage("metfRag", "c-ruttkies/MetFragR")
@@ -697,4 +699,9 @@ generateCompoundsMetfrag <- function(fGroups, MSPeakLists, method = "CL", logPat
     return(compoundsMF(compounds = lapply(results, "[[", "comptab"), scoreTypes = scoreTypes,
                        scoreRanges = lapply(results, "[[", "scRanges"),
                        settings = mfSettings))
-}
+})
+
+setMethod("generateCompoundsMetfrag", "featureGroupsSet", function(fGroups, MSPeakLists, ..., setThreshold = 0.75)
+{
+    generateCompoundsSet(fGroups, MSPeakLists, generateCompoundsMetfrag, ..., setThreshold = setThreshold)
+})

@@ -1,6 +1,7 @@
 #' @include main.R
 #' @include compounds.R
 #' @include utils-sirius.R
+#' @include feature_groups-set.R
 NULL
 
 processSIRIUSCompounds <- function(msFName, outPath, cmpName, MSMS, database, adduct, topMost, hash, isPre44, cacheDB)
@@ -118,12 +119,14 @@ processSIRIUSCompounds <- function(msFName, outPath, cmpName, MSMS, database, ad
 #'
 #' @rdname compound-generation
 #' @export
-generateCompoundsSIRIUS <- function(fGroups, MSPeakLists, relMzDev = 5, adduct = "[M+H]+", elements = "CHNOP",
-                                    profile = "qtof", formulaDatabase = NULL, fingerIDDatabase = "pubchem",
-                                    noise = NULL, errorRetries = 2, cores = NULL, topMost = 100, topMostFormulas = 5,
-                                    extraOptsGeneral = NULL, extraOptsFormula = NULL, verbose = TRUE,
-                                    SIRBatchSize = 0, logPath = file.path("log", "sirius_compounds"),
-                                    maxProcAmount = getOption("patRoon.maxProcAmount"))
+setMethod("generateCompoundsSIRIUS", "featureGroups", function(fGroups, MSPeakLists, relMzDev = 5, adduct = "[M+H]+",
+                                                               elements = "CHNOP",
+                                                               profile = "qtof", formulaDatabase = NULL,
+                                                               fingerIDDatabase = "pubchem", noise = NULL, errorRetries = 2,
+                                                               cores = NULL, topMost = 100, topMostFormulas = 5,
+                                                               extraOptsGeneral = NULL, extraOptsFormula = NULL, verbose = TRUE,
+                                                               SIRBatchSize = 0, logPath = file.path("log", "sirius_compounds"),
+                                                               maxProcAmount = getOption("patRoon.maxProcAmount"))
 {
     ac <- checkmate::makeAssertCollection()
     checkmate::assertClass(fGroups, "featureGroups", add = ac)
@@ -170,4 +173,9 @@ generateCompoundsSIRIUS <- function(fGroups, MSPeakLists, relMzDev = 5, adduct =
     return(compounds(compounds = lapply(results, "[[", "comptab"), scoreTypes = "score",
                      scoreRanges = lapply(results, "[[", "scRanges"),
                      algorithm = "sirius"))
-}
+})
+
+setMethod("generateCompoundsSIRIUS", "featureGroupsSet", function(fGroups, MSPeakLists, ..., setThreshold = 0.75)
+{
+    generateCompoundsSet(fGroups, MSPeakLists, generateCompoundsSIRIUS, ..., setThreshold = setThreshold)
+})
