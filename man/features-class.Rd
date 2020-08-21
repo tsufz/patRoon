@@ -66,9 +66,9 @@
 
 \S4method{$}{features}(x, name)
 
-\S4method{[[}{featuresSet,ANY,missing}(x, i, neutralized)
+\S4method{[[}{featuresSet,ANY,missing}(x, i, neutralized = TRUE)
 
-\S4method{filter}{featuresSet}(obj, ..., sets = NULL)
+\S4method{filter}{featuresSet}(obj, ..., negate = FALSE, sets = NULL)
 
 \S4method{[}{featuresXCMS,ANY,missing,missing}(x, i, j, ..., drop = TRUE)
 
@@ -177,7 +177,7 @@ for access.}
 }}
 
 \section{S4 class hierarchy}{
- \itemize{   \item{\code{\link{workflowStep}}}   \itemize{     \item{\strong{\code{\link{features}}}}     \itemize{       \item{\code{\link{featuresFromFeatGroups}}}       \item{\code{\link{featuresConsensus}}}       \item{\code{\link{featuresSet}}}       \item{\code{\link{featuresSetIonized}}}       \item{\code{\link{featuresBruker}}}       \item{\code{\link{featuresEnviPick}}}       \item{\code{\link{featuresOpenMS}}}       \item{\code{\link{featuresBrukerTASQ}}}       \item{\code{\link{featuresXCMS}}}       \item{\code{\link{featuresXCMS3}}}     }   } }
+ \itemize{   \item{\code{\link{workflowStep}}}   \itemize{     \item{\strong{\code{\link{features}}}}     \itemize{       \item{\code{\link{featuresSet}}}       \item{\code{\link{featuresSetIonized}}}       \item{\code{\link{featuresFromFeatGroups}}}       \item{\code{\link{featuresConsensus}}}       \item{\code{\link{featuresBruker}}}       \item{\code{\link{featuresEnviPick}}}       \item{\code{\link{featuresOpenMS}}}       \item{\code{\link{featuresBrukerTASQ}}}       \item{\code{\link{featuresXCMS}}}       \item{\code{\link{featuresXCMS3}}}     }   } }
 }
 
 \seealso{

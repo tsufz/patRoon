@@ -5,14 +5,14 @@
 \alias{compound-generation}
 \alias{generateCompounds,featureGroups-method}
 \alias{generateCompounds}
-\alias{generateCompoundsMetfrag}
-\alias{generateCompoundsSIRIUS}
+\alias{generateCompoundsMetfrag,featureGroups-method}
+\alias{generateCompoundsSIRIUS,featureGroups-method}
 \alias{compoundScorings}
 \title{Automatic compound identification}
 \usage{
 \S4method{generateCompounds}{featureGroups}(fGroups, MSPeakLists, algorithm, ...)
 
-generateCompoundsMetfrag(
+\S4method{generateCompoundsMetfrag}{featureGroups}(
   fGroups,
   MSPeakLists,
   method = "CL",
@@ -38,7 +38,7 @@ generateCompoundsMetfrag(
   maxProcAmount = getOption("patRoon.maxProcAmount")
 )
 
-generateCompoundsSIRIUS(
+\S4method{generateCompoundsSIRIUS}{featureGroups}(
   fGroups,
   MSPeakLists,
   relMzDev = 5,

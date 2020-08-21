@@ -134,7 +134,7 @@ please refer to the linked method documentation for each generic.
 \code{analysisInfo} returns the \link[=analysis-information]{analysis information} from an object.
 
 \itemize{
-    \item Methods are defined for: \code{\link[=analysisInfo,featureGroups-method]{featureGroups}}; \code{\link[=analysisInfo,features-method]{features}}.
+    \item Methods are defined for: \code{\link[=analysisInfo,featureGroups-method]{featureGroups}}; \code{\link[=analysisInfo,features-method]{features}}; \code{\link[=analysisInfo,MSPeakListsSet-method]{MSPeakListsSet}}.
 }
 
 \code{analyses} returns a \code{character} vector with the analyses for which data is present in this object.
@@ -146,7 +146,7 @@ please refer to the linked method documentation for each generic.
 \code{annotatedPeakList} returns an annotated MS peak list.
 
 \itemize{
-    \item Methods are defined for: \code{\link[=annotatedPeakList,compounds-method]{compounds}}; \code{\link[=annotatedPeakList,formulas-method]{formulas}}.
+    \item Methods are defined for: \code{\link[=annotatedPeakList,compounds-method]{compounds}}; \code{\link[=annotatedPeakList,compoundsSet-method]{compoundsSet}}; \code{\link[=annotatedPeakList,formulas-method]{formulas}}.
 }
 
 \code{clusterProperties} Obtain a list with properties of the generated cluster(s).
@@ -188,7 +188,7 @@ please refer to the linked method documentation for each generic.
 \code{filter} provides various functionality to do post-filtering of data.
 
 \itemize{
-    \item Methods are defined for: \code{\link[=filter,components-method]{components}}; \code{\link[=filter,compounds-method]{compounds}}; \code{\link[=filter,featureGroups-method]{featureGroups}}; \code{\link[=filter,features-method]{features}}; \code{\link[=filter,featuresSet-method]{featuresSet}}; \code{\link[=filter,featuresXCMS-method]{featuresXCMS}}; \code{\link[=filter,featuresXCMS3-method]{featuresXCMS3}}; \code{\link[=filter,formulas-method]{formulas}}; \code{\link[=filter,MSPeakLists-method]{MSPeakLists}}.
+    \item Methods are defined for: \code{\link[=filter,components-method]{components}}; \code{\link[=filter,componentsSet-method]{componentsSet}}; \code{\link[=filter,compounds-method]{compounds}}; \code{\link[=filter,compoundsSet-method]{compoundsSet}}; \code{\link[=filter,featureGroups-method]{featureGroups}}; \code{\link[=filter,featureGroupsSet-method]{featureGroupsSet}}; \code{\link[=filter,features-method]{features}}; \code{\link[=filter,featuresSet-method]{featuresSet}}; \code{\link[=filter,featuresXCMS-method]{featuresXCMS}}; \code{\link[=filter,featuresXCMS3-method]{featuresXCMS3}}; \code{\link[=filter,formulas-method]{formulas}}; \code{\link[=filter,formulasSet-method]{formulasSet}}; \code{\link[=filter,MSPeakLists-method]{MSPeakLists}}; \code{\link[=filter,MSPeakListsSet-method]{MSPeakListsSet}}.
 }
 
 \code{getFeatures} returns the object's \code{\link{features}} object.
@@ -218,7 +218,7 @@ please refer to the linked method documentation for each generic.
 \code{plotEIC} plots extracted ion chromatogram(s).
 
 \itemize{
-    \item Methods are defined for: \code{\link[=plotEIC,components-method]{components}}; \code{\link[=plotEIC,featureGroups-method]{featureGroups}}.
+    \item Methods are defined for: \code{\link[=plotEIC,components-method]{components}}; \code{\link[=plotEIC,featureGroups-method]{featureGroups}}; \code{\link[=plotEIC,featureGroupsSet-method]{featureGroupsSet}}.
 }
 
 \code{plotInt} plots the intensity of all contained features.
@@ -242,7 +242,7 @@ please refer to the linked method documentation for each generic.
 \code{plotSpec} plots a (annotated) spectrum.
 
 \itemize{
-    \item Methods are defined for: \code{\link[=plotSpec,components-method]{components}}; \code{\link[=plotSpec,compounds-method]{compounds}}; \code{\link[=plotSpec,formulas-method]{formulas}}; \code{\link[=plotSpec,MSPeakLists-method]{MSPeakLists}}.
+    \item Methods are defined for: \code{\link[=plotSpec,components-method]{components}}; \code{\link[=plotSpec,compounds-method]{compounds}}; \code{\link[=plotSpec,compoundsSet-method]{compoundsSet}}; \code{\link[=plotSpec,formulas-method]{formulas}}; \code{\link[=plotSpec,formulasSet-method]{formulasSet}}; \code{\link[=plotSpec,MSPeakLists-method]{MSPeakLists}}; \code{\link[=plotSpec,MSPeakListsSet-method]{MSPeakListsSet}}.
 }
 
 \code{plotStructure} plots a chemical structure.
@@ -289,7 +289,7 @@ please refer to the linked method documentation for each generic.
  \code{[} Subsets data within an object.
 
 \itemize{
-    \item Methods are defined for: \code{\link[=[,components,ANY,ANY,missing-method]{components,ANY,ANY,missing}}; \code{\link[=[,compounds,ANY,missing,missing-method]{compounds,ANY,missing,missing}}; \code{\link[=[,compoundsCluster,ANY,missing,missing-method]{compoundsCluster,ANY,missing,missing}}; \code{\link[=[,featureGroups,ANY,ANY,missing-method]{featureGroups,ANY,ANY,missing}}; \code{\link[=[,featureGroupsComparison,ANY,missing,missing-method]{featureGroupsComparison,ANY,missing,missing}}; \code{\link[=[,featureGroupsSet,ANY,ANY,missing-method]{featureGroupsSet,ANY,ANY,missing}}; \code{\link[=[,features,ANY,missing,missing-method]{features,ANY,missing,missing}}; \code{\link[=[,featuresSet,ANY,missing,missing-method]{featuresSet,ANY,missing,missing}}; \code{\link[=[,featuresXCMS,ANY,missing,missing-method]{featuresXCMS,ANY,missing,missing}}; \code{\link[=[,featuresXCMS3,ANY,missing,missing-method]{featuresXCMS3,ANY,missing,missing}}; \code{\link[=[,formulas,ANY,missing,missing-method]{formulas,ANY,missing,missing}}; \code{\link[=[,MSPeakLists,ANY,ANY,missing-method]{MSPeakLists,ANY,ANY,missing}}.
+    \item Methods are defined for: \code{\link[=[,components,ANY,ANY,missing-method]{components,ANY,ANY,missing}}; \code{\link[=[,componentsSet,ANY,ANY,missing-method]{componentsSet,ANY,ANY,missing}}; \code{\link[=[,compounds,ANY,missing,missing-method]{compounds,ANY,missing,missing}}; \code{\link[=[,compoundsCluster,ANY,missing,missing-method]{compoundsCluster,ANY,missing,missing}}; \code{\link[=[,compoundsSet,ANY,missing,missing-method]{compoundsSet,ANY,missing,missing}}; \code{\link[=[,featureGroups,ANY,ANY,missing-method]{featureGroups,ANY,ANY,missing}}; \code{\link[=[,featureGroupsComparison,ANY,missing,missing-method]{featureGroupsComparison,ANY,missing,missing}}; \code{\link[=[,featureGroupsSet,ANY,ANY,missing-method]{featureGroupsSet,ANY,ANY,missing}}; \code{\link[=[,features,ANY,missing,missing-method]{features,ANY,missing,missing}}; \code{\link[=[,featuresSet,ANY,missing,missing-method]{featuresSet,ANY,missing,missing}}; \code{\link[=[,featuresXCMS,ANY,missing,missing-method]{featuresXCMS,ANY,missing,missing}}; \code{\link[=[,featuresXCMS3,ANY,missing,missing-method]{featuresXCMS3,ANY,missing,missing}}; \code{\link[=[,formulas,ANY,missing,missing-method]{formulas,ANY,missing,missing}}; \code{\link[=[,formulasSet,ANY,missing,missing-method]{formulasSet,ANY,missing,missing}}; \code{\link[=[,MSPeakLists,ANY,ANY,missing-method]{MSPeakLists,ANY,ANY,missing}}; \code{\link[=[,MSPeakListsSet,ANY,ANY,missing-method]{MSPeakListsSet,ANY,ANY,missing}}.
 }
 
  \code{[[} Extract data from an object.
@@ -307,7 +307,7 @@ please refer to the linked method documentation for each generic.
  \code{as.data.table} Converts an object to a table (\code{\link{data.table}}).
 
 \itemize{
-    \item Methods are defined for: \code{\link[=as.data.table,components-method]{components}}; \code{\link[=as.data.table,compounds-method]{compounds}}; \code{\link[=as.data.table,featureGroups-method]{featureGroups}}; \code{\link[=as.data.table,featureGroupsSet-method]{featureGroupsSet}}; \code{\link[=as.data.table,features-method]{features}}; \code{\link[=as.data.table,featuresSet-method]{featuresSet}}; \code{\link[=as.data.table,formulas-method]{formulas}}; \code{\link[=as.data.table,MSPeakLists-method]{MSPeakLists}}; \code{\link[=as.data.table,workflowStep-method]{workflowStep}}.
+    \item Methods are defined for: \code{\link[=as.data.table,components-method]{components}}; \code{\link[=as.data.table,compounds-method]{compounds}}; \code{\link[=as.data.table,featureGroups-method]{featureGroups}}; \code{\link[=as.data.table,featureGroupsSet-method]{featureGroupsSet}}; \code{\link[=as.data.table,features-method]{features}}; \code{\link[=as.data.table,featuresSet-method]{featuresSet}}; \code{\link[=as.data.table,formulas-method]{formulas}}; \code{\link[=as.data.table,formulasSet-method]{formulasSet}}; \code{\link[=as.data.table,MSPeakLists-method]{MSPeakLists}}; \code{\link[=as.data.table,MSPeakListsSet-method]{MSPeakListsSet}}; \code{\link[=as.data.table,workflowStep-method]{workflowStep}}.
 }
 
  \code{as.data.frame} Converts an object to a table (\code{data.frame}).
@@ -343,7 +343,7 @@ please refer to the linked method documentation for each generic.
  \code{show} Prints information about this object.
 
 \itemize{
-    \item Methods are defined for: \code{\link[=show,adduct-method]{adduct}}; \code{\link[=show,components-method]{components}}; \code{\link[=show,compounds-method]{compounds}}; \code{\link[=show,compoundsCluster-method]{compoundsCluster}}; \code{\link[=show,featureGroups-method]{featureGroups}}; \code{\link[=show,featureGroupsSet-method]{featureGroupsSet}}; \code{\link[=show,features-method]{features}}; \code{\link[=show,featuresSet-method]{featuresSet}}; \code{\link[=show,formulas-method]{formulas}}; \code{\link[=show,MSPeakLists-method]{MSPeakLists}}; \code{\link[=show,optimizationResult-method]{optimizationResult}}; \code{\link[=show,workflowStep-method]{workflowStep}}.
+    \item Methods are defined for: \code{\link[=show,adduct-method]{adduct}}; \code{\link[=show,components-method]{components}}; \code{\link[=show,componentsSet-method]{componentsSet}}; \code{\link[=show,compounds-method]{compounds}}; \code{\link[=show,compoundsCluster-method]{compoundsCluster}}; \code{\link[=show,compoundsSet-method]{compoundsSet}}; \code{\link[=show,featureGroups-method]{featureGroups}}; \code{\link[=show,featureGroupsSet-method]{featureGroupsSet}}; \code{\link[=show,features-method]{features}}; \code{\link[=show,featuresSet-method]{featuresSet}}; \code{\link[=show,formulas-method]{formulas}}; \code{\link[=show,formulasSet-method]{formulasSet}}; \code{\link[=show,MSPeakLists-method]{MSPeakLists}}; \code{\link[=show,MSPeakListsSet-method]{MSPeakListsSet}}; \code{\link[=show,optimizationResult-method]{optimizationResult}}; \code{\link[=show,workflowStep-method]{workflowStep}}.
 }
 }
 
