@@ -241,7 +241,7 @@ allPlots <- lapply(seq_along(plotGroups), function(grpi)
     
     if (grp %in% formFGroups)
     {
-        precursors <- unique(rmdVars$formulas[[grp]][["formula"]])
+        precursors <- unique(rmdVars$formulas[[grp]][["neutral_formula"]])
         
         grpPlots[["formulaScores"]] <- sapply(precursors, function(prec)
         {
@@ -355,7 +355,7 @@ DT::datatable(compoundsDT, options = list(scrollX = TRUE, scrollY = "600px", def
 formulasDT <- rbindlist(lapply(formFGroups, function(grp)
 {
     grpi <- which(plotGroups == grp)
-    precursors <- unique(rmdVars$formulas[[grp]][["formula"]])
+    precursors <- unique(rmdVars$formulas[[grp]][["neutral_formula"]])
     
     infoTexts <- sapply(precursors,
                         function(prec) paste0(getFormInfoList(rmdVars$formulas[[grp]], prec, useHTML = TRUE),
