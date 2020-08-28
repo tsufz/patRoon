@@ -63,6 +63,7 @@
 - improve instructions for MF and SIRIUS installation?
 - improve docs for areas (only affects when features=FALSE) and average (different behavior when features=TRUE/FALSE) for as.data.table() of featureGroups
 - update/check version nr mentioned in filter() for MSPeakLists
+- explain xlim/ylim behavior for annotations/mols for plotSpec()
 
 
 ## sets
@@ -86,9 +87,10 @@
         - nay: might be a bit strange when looking for adducts etc and components are per set anyway
     - intclust: return componentsSet? if not document somewhere...
     - clearly mention that nontarget is done per set now
-    - nontarget-set: plotGraph method?
+    - nontarget-set: plotGraph method? and make sure it's used in reportHTML()
 - implement XCMS conversion functions? maybe with given set. Could just ionize() it.
 - ionize() for compounds/components? if not remove formulas?
+- setThreshold filter() argument, and remove argument from generators?
 
 
 ## features
