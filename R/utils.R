@@ -533,3 +533,19 @@ assertAndGetMSPLSetsArgs <- function(fGroupsSet, MSPeakListsSet)
     return(lapply(ionizedMSPeaksList, function(x) list(MSPeakLists = x)))
 }
 
+ReduceWithArgs <- function(f, x, ..., fixedArgs = list())
+{
+    ret <- x[[1]]
+    itArgs <- list(...)
+    
+    if (length(x) > 1)
+    {
+        x <- x[-1]
+        for (i in seq_along(x))
+            ret <- do.call(f, c(list(ret, x[[i]]),
+                                lapply(itArgs, "[[", 1), lapply(itArgs, "[[", i+1),
+                                fixedArgs))
+    }
+    
+    return(ret)
+}
