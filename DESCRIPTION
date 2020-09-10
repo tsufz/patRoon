@@ -144,7 +144,6 @@ Collate:
     'components-nontarget.R'
     'components-ramclustr.R'
     'components-set.R'
-    'utils-components.R'
     'components-tps.R'
     'compounds.R'
     'compounds-cluster.R'
@@ -171,6 +170,7 @@ Collate:
     'utils.R'
     'utils-screening.R'
     'feature_groups-screening.R'
+    'feature_groups-screening-set.R'
     'feature_groups-tasq.R'
     'feature_groups-xcms.R'
     'feature_groups-xcms3.R'
@@ -204,6 +204,7 @@ Collate:
     'utils-mspeaklists.R'
     'utils-optimize.R'
     'utils-plot.R'
+    'utils-suspects.R'
     'utils-xcms.R'
     'zzz.R'
 VignetteBuilder: knitr
