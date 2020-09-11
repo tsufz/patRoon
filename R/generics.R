@@ -102,8 +102,8 @@ setGeneric("ionize", function(obj, sets = NULL) standardGeneric("ionize"))
 setGeneric("suspects", function(pred) standardGeneric("suspects"))
 setGeneric("predictions", function(pred) standardGeneric("predictions"))
 setGeneric("convertToMFDB", function(pred, out, includePrec = TRUE) standardGeneric("convertToMFDB"))
-setGeneric("convertToSuspects", function(pred, adduct, includePrec = TRUE) standardGeneric("convertToSuspects"))
-setGeneric("linkPrecursorsToFGroups", function(pred, fGroups, adduct, mzWindow) standardGeneric("linkPrecursorsToFGroups"))
+setGeneric("convertToSuspects", function(pred, includePrec = TRUE) standardGeneric("convertToSuspects"))
+setGeneric("linkPrecursorsToFGroups", function(pred, fGroupsScr) standardGeneric("linkPrecursorsToFGroups"))
 
 ### suspect screening
 
