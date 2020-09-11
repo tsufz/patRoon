@@ -555,9 +555,9 @@ setMethod("plotSpec", "MSPeakLists", function(obj, groupName, analysis = NULL, M
 #' @export
 setMethod("spectrumSimilarity", "MSPeakLists", function(obj, groupName1, groupName2,
                                                         analysis1, analysis2,
-                                                        MSLevel, doPlot, absMzDev,
-                                                        relMinIntensity, omitPrecursor,
-                                                        mzShift, xlim, ylim, ...)
+                                                        MSLevel, doPlot = TRUE, absMzDev = 0.002,
+                                                        relMinIntensity = 10, omitPrecursor = FALSE,
+                                                        mzShift = 0, xlim = NULL, ylim = c(0, 100), ...)
 {
     ac <- checkmate::makeAssertCollection()
     aapply(checkmate::assertChoice, . ~ groupName1 + groupName2,

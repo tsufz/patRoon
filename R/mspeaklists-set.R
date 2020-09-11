@@ -235,6 +235,24 @@ setMethod("plotSpec", "MSPeakListsSet", function(obj, groupName, analysis = NULL
     return(makeMSPlotSets(spec, title, mirror, sets(obj), xlim, ylim, useGGPlot2, ...))
 })
 
+#' @export
+setMethod("spectrumSimilarity", "MSPeakListsSet", function(obj, groupName1, groupName2, ...)
+{
+    ac <- checkmate::makeAssertCollection()
+    aapply(checkmate::assertChoice, . ~ groupName1 + groupName2,
+           fixed = list(choices = groupNames(obj), add = ac))
+    checkmate::reportAssertions(ac)
+    
+    sim <- sapply(setObjects(obj), function(so)
+    {
+        if (all(c(groupName1, groupName2) %in% groupNames(so)))
+            return(spectrumSimilarity(so, groupName1, groupName2, ...))
+        return(0)
+    })
+    return(mean(sim))
+})
+
+
 generateMSPeakListsSet <- function(fGroupsSet, generator, ...)
 {
     # ionize all fGroups sets, calculate MS peak lists for each set and store in setObjects
