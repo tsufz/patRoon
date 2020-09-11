@@ -77,7 +77,7 @@ setMethod("export", "featureGroupsSet", function(obj, type, out, sets = NULL) ca
 #'   (\emph{i.e.} the minimum amount).
 #' @export
 setMethod("as.data.table", "featureGroupsSet", function(x, average = FALSE, areas = FALSE, features = FALSE,
-                                                        regression = FALSE, normFunc = NULL,
+                                                        regression = FALSE, normFunc = NULL, FC = NULL,
                                                         neutralized = TRUE, sets = NULL)
 {
     # UNDONE: also support reporting ionized features with different adducts?
@@ -97,7 +97,7 @@ setMethod("as.data.table", "featureGroupsSet", function(x, average = FALSE, area
     
     # NOTE: we normalize hereafter per set afterwards
     ret <- callNextMethod(x, average = average, areas = areas, features = features,
-                          regression = regression, normFunc = NULL)
+                          regression = regression, normFunc = NULL, FC = FC)
     
     if (!is.null(ret[["analysis"]])) # add set column if feature data is present
     {
