@@ -332,6 +332,11 @@ setGeneric("plotVenn", function(obj, ...) standardGeneric("plotVenn"))
 #' @template generics
 setGeneric("plotUpSet", function(obj, ...) standardGeneric("plotUpSet"))
 
+#' @templateVar func plotVolcano
+#' @templateVar desc plots a volcano plot.
+#' @template generics
+setGeneric("plotVolcano", function(obj, ...) standardGeneric("plotVolcano"))
+
 #' @templateVar func replicateGroups
 #' @templateVar desc returns a \code{character} vector with the analyses for which data is present in this object.
 #' @template generics
