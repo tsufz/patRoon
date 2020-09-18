@@ -26,6 +26,7 @@
 \alias{plotStructure}
 \alias{plotVenn}
 \alias{plotUpSet}
+\alias{plotVolcano}
 \alias{replicateGroups}
 \alias{treeCut}
 \alias{treeCutDynamic}
@@ -88,6 +89,8 @@ plotStructure(obj, ...)
 plotVenn(obj, ...)
 
 plotUpSet(obj, ...)
+
+plotVolcano(obj, ...)
 
 replicateGroups(obj)
 
@@ -157,19 +160,19 @@ please refer to the linked method documentation for each generic.
 \code{clusterProperties} Obtain a list with properties of the generated cluster(s).
 
 \itemize{
-    \item Methods are defined for: \code{\link[=clusterProperties,componentsIntClust-method]{componentsIntClust}}; \code{\link[=clusterProperties,compoundsCluster-method]{compoundsCluster}}.
+    \item Methods are defined for: \code{\link[=clusterProperties,componentsClust-method]{componentsClust}}; \code{\link[=clusterProperties,componentsIntClust-method]{componentsIntClust}}; \code{\link[=clusterProperties,compoundsCluster-method]{compoundsCluster}}.
 }
 
 \code{clusters} Obtain clustering object(s).
 
 \itemize{
-    \item Methods are defined for: \code{\link[=clusters,componentsIntClust-method]{componentsIntClust}}; \code{\link[=clusters,compoundsCluster-method]{compoundsCluster}}.
+    \item Methods are defined for: \code{\link[=clusters,componentsClust-method]{componentsClust}}; \code{\link[=clusters,componentsIntClust-method]{componentsIntClust}}; \code{\link[=clusters,compoundsCluster-method]{compoundsCluster}}.
 }
 
 \code{cutClusters} Returns assigned cluster indices of a cut cluster.
 
 \itemize{
-    \item Methods are defined for: \code{\link[=cutClusters,componentsIntClust-method]{componentsIntClust}}; \code{\link[=cutClusters,compoundsCluster-method]{compoundsCluster}}.
+    \item Methods are defined for: \code{\link[=cutClusters,componentsClust-method]{componentsClust}}; \code{\link[=cutClusters,componentsIntClust-method]{componentsIntClust}}; \code{\link[=cutClusters,compoundsCluster-method]{compoundsCluster}}.
 }
 
 \code{consensus} combines and merges data from various algorithms to generate a consensus.
@@ -247,7 +250,7 @@ please refer to the linked method documentation for each generic.
 \code{plotSilhouettes} plots silhouette widths to evaluate the desired cluster size.
 
 \itemize{
-    \item Methods are defined for: \code{\link[=plotSilhouettes,componentsIntClust-method]{componentsIntClust}}; \code{\link[=plotSilhouettes,compoundsCluster-method]{compoundsCluster}}.
+    \item Methods are defined for: \code{\link[=plotSilhouettes,componentsClust-method]{componentsClust}}; \code{\link[=plotSilhouettes,componentsIntClust-method]{componentsIntClust}}; \code{\link[=plotSilhouettes,compoundsCluster-method]{compoundsCluster}}.
 }
 
 \code{plotSpec} plots a (annotated) spectrum.
@@ -274,6 +277,12 @@ please refer to the linked method documentation for each generic.
     \item Methods are defined for: \code{\link[=plotUpSet,compounds-method]{compounds}}; \code{\link[=plotUpSet,featureGroups-method]{featureGroups}}; \code{\link[=plotUpSet,featureGroupsComparison-method]{featureGroupsComparison}}; \code{\link[=plotUpSet,formulas-method]{formulas}}.
 }
 
+\code{plotVolcano} plots a volcano plot.
+
+\itemize{
+    \item Methods are defined for: \code{\link[=plotVolcano,featureGroups-method]{featureGroups}}.
+}
+
 \code{replicateGroups} returns a \code{character} vector with the analyses for which data is present in this object.
 
 \itemize{
@@ -283,13 +292,13 @@ please refer to the linked method documentation for each generic.
 \code{treeCut} Manually cut a cluster.
 
 \itemize{
-    \item Methods are defined for: \code{\link[=treeCut,componentsIntClust-method]{componentsIntClust}}; \code{\link[=treeCut,compoundsCluster-method]{compoundsCluster}}.
+    \item Methods are defined for: \code{\link[=treeCut,componentsClust-method]{componentsClust}}; \code{\link[=treeCut,componentsIntClust-method]{componentsIntClust}}; \code{\link[=treeCut,compoundsCluster-method]{compoundsCluster}}.
 }
 
 \code{treeCutDynamic} Automatically cut a cluster.
 
 \itemize{
-    \item Methods are defined for: \code{\link[=treeCutDynamic,componentsIntClust-method]{componentsIntClust}}; \code{\link[=treeCutDynamic,compoundsCluster-method]{compoundsCluster}}.
+    \item Methods are defined for: \code{\link[=treeCutDynamic,componentsClust-method]{componentsClust}}; \code{\link[=treeCutDynamic,componentsIntClust-method]{componentsIntClust}}; \code{\link[=treeCutDynamic,compoundsCluster-method]{compoundsCluster}}.
 }
 }
 \section{Other generics}{
@@ -348,7 +357,7 @@ please refer to the linked method documentation for each generic.
  \code{plot} Generates a plot for an object.
 
 \itemize{
-    \item Methods are defined for: \code{\link[=plot,componentsIntClust,ANY-method]{componentsIntClust,ANY}}; \code{\link[=plot,compoundsCluster,ANY-method]{compoundsCluster,ANY}}; \code{\link[=plot,featureGroups,ANY-method]{featureGroups,ANY}}; \code{\link[=plot,featureGroupsComparison,ANY-method]{featureGroupsComparison,ANY}}; \code{\link[=plot,optimizationResult,ANY-method]{optimizationResult,ANY}}.
+    \item Methods are defined for: \code{\link[=plot,componentsClust,ANY-method]{componentsClust,ANY}}; \code{\link[=plot,componentsIntClust,ANY-method]{componentsIntClust,ANY}}; \code{\link[=plot,compoundsCluster,ANY-method]{compoundsCluster,ANY}}; \code{\link[=plot,featureGroups,ANY-method]{featureGroups,ANY}}; \code{\link[=plot,featureGroupsComparison,ANY-method]{featureGroupsComparison,ANY}}; \code{\link[=plot,optimizationResult,ANY-method]{optimizationResult,ANY}}.
 }
 
  \code{show} Prints information about this object.
