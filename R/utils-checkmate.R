@@ -340,6 +340,13 @@ assertEqualAdducts <- function(adducts)
         stop("Selected sets must have have equal adducts")
 }
 
+assertDynamicTreeCutArgs <- function(maxTreeHeight, deepSplit, minModuleSize, add = NULL)
+{
+    checkmate::assertNumber(maxTreeHeight, 0, finite = TRUE, add = add)
+    checkmate::assertFlag(deepSplit, add = add)
+    checkmate::assertCount(minModuleSize, positive = TRUE, add = add)
+}
+
 # from https://github.com/mllg/checkmate/issues/115
 aapply = function(fun, formula, ..., fixed = list())
 {
