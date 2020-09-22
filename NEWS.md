@@ -1,4 +1,4 @@
-# patRoon 1.2
+# patRoon next major release
 
 * **New functionality**
     - The `as.data.table()` method for `featureGroups` now supports normalization of intensities through the `normFunc` argument.
@@ -8,7 +8,7 @@
     - The methodology of `plotSpec()` to automatically calculate the space necessary for formula annotation texts and candidate structures was improved. Annotation texts are now automatically resized if there is insufficient space, and the maximum size and resolution for candidate structures can be controlled with the `maxMolSize`/`molRes` parameters.
 * Minor changes
     - `show()` methods now print class inheritance tree
-
+* Intensity clusters now use `fastcluster` for hierarchical clustering
 
 
 
