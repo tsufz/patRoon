@@ -51,3 +51,12 @@ bool numberWithin(double x, double minVal, double maxVal, double tol)
     return((x > minVal || compareTol(x, minVal, tol)) &&
            (x < maxVal || compareTol(x, maxVal, tol)));
 }
+
+void normalizeNums(std::vector<double> &v)
+{
+    double m = 0;
+    for (double d : v)
+        m = std::max(m, d);
+    for (double &d : v)
+        d /= m;
+}

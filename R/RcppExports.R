@@ -13,11 +13,23 @@ writeFeatureXML <- function(featList, out) {
     invisible(.Call(`_patRoon_writeFeatureXML`, featList, out))
 }
 
+specDistMatrix <- function(specList, cb) {
+    .Call(`_patRoon_specDistMatrix`, specList, cb)
+}
+
 loadEICIntensities <- function(spectra, featList, rtWindow) {
     .Call(`_patRoon_loadEICIntensities`, spectra, featList, rtWindow)
 }
 
 loadEICs <- function(spectra, rtRanges, mzRanges) {
     .Call(`_patRoon_loadEICs`, spectra, rtRanges, mzRanges)
+}
+
+binSpecCPP <- function(sp1, sp2, shift, mzWindow) {
+    .Call(`_patRoon_binSpecCPP`, sp1, sp2, shift, mzWindow)
+}
+
+calcSpecSimularity <- function(sp1, sp2, method, shift, mzWindow, mzWeight, intWeight) {
+    .Call(`_patRoon_calcSpecSimularity`, sp1, sp2, method, shift, mzWindow, mzWeight, intWeight)
 }
 

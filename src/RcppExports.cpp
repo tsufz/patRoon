@@ -39,6 +39,18 @@ BEGIN_RCPP
     return R_NilValue;
 END_RCPP
 }
+// specDistMatrix
+Rcpp::NumericMatrix specDistMatrix(Rcpp::List specList, Rcpp::Function cb);
+RcppExport SEXP _patRoon_specDistMatrix(SEXP specListSEXP, SEXP cbSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< Rcpp::List >::type specList(specListSEXP);
+    Rcpp::traits::input_parameter< Rcpp::Function >::type cb(cbSEXP);
+    rcpp_result_gen = Rcpp::wrap(specDistMatrix(specList, cb));
+    return rcpp_result_gen;
+END_RCPP
+}
 // loadEICIntensities
 Rcpp::NumericVector loadEICIntensities(Rcpp::List spectra, Rcpp::DataFrame featList, Rcpp::NumericVector rtWindow);
 RcppExport SEXP _patRoon_loadEICIntensities(SEXP spectraSEXP, SEXP featListSEXP, SEXP rtWindowSEXP) {
@@ -65,13 +77,47 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// binSpecCPP
+Rcpp::DataFrame binSpecCPP(Rcpp::DataFrame sp1, Rcpp::DataFrame sp2, Rcpp::CharacterVector shift, Rcpp::NumericVector mzWindow);
+RcppExport SEXP _patRoon_binSpecCPP(SEXP sp1SEXP, SEXP sp2SEXP, SEXP shiftSEXP, SEXP mzWindowSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< Rcpp::DataFrame >::type sp1(sp1SEXP);
+    Rcpp::traits::input_parameter< Rcpp::DataFrame >::type sp2(sp2SEXP);
+    Rcpp::traits::input_parameter< Rcpp::CharacterVector >::type shift(shiftSEXP);
+    Rcpp::traits::input_parameter< Rcpp::NumericVector >::type mzWindow(mzWindowSEXP);
+    rcpp_result_gen = Rcpp::wrap(binSpecCPP(sp1, sp2, shift, mzWindow));
+    return rcpp_result_gen;
+END_RCPP
+}
+// calcSpecSimularity
+Rcpp::NumericVector calcSpecSimularity(Rcpp::DataFrame sp1, Rcpp::DataFrame sp2, Rcpp::CharacterVector method, Rcpp::CharacterVector shift, Rcpp::NumericVector mzWindow, Rcpp::NumericVector mzWeight, Rcpp::NumericVector intWeight);
+RcppExport SEXP _patRoon_calcSpecSimularity(SEXP sp1SEXP, SEXP sp2SEXP, SEXP methodSEXP, SEXP shiftSEXP, SEXP mzWindowSEXP, SEXP mzWeightSEXP, SEXP intWeightSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< Rcpp::DataFrame >::type sp1(sp1SEXP);
+    Rcpp::traits::input_parameter< Rcpp::DataFrame >::type sp2(sp2SEXP);
+    Rcpp::traits::input_parameter< Rcpp::CharacterVector >::type method(methodSEXP);
+    Rcpp::traits::input_parameter< Rcpp::CharacterVector >::type shift(shiftSEXP);
+    Rcpp::traits::input_parameter< Rcpp::NumericVector >::type mzWindow(mzWindowSEXP);
+    Rcpp::traits::input_parameter< Rcpp::NumericVector >::type mzWeight(mzWeightSEXP);
+    Rcpp::traits::input_parameter< Rcpp::NumericVector >::type intWeight(intWeightSEXP);
+    rcpp_result_gen = Rcpp::wrap(calcSpecSimularity(sp1, sp2, method, shift, mzWindow, mzWeight, intWeight));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_patRoon_parseFeatureXMLFile", (DL_FUNC) &_patRoon_parseFeatureXMLFile, 1},
     {"_patRoon_parseFeatConsXMLFile", (DL_FUNC) &_patRoon_parseFeatConsXMLFile, 2},
     {"_patRoon_writeFeatureXML", (DL_FUNC) &_patRoon_writeFeatureXML, 2},
+    {"_patRoon_specDistMatrix", (DL_FUNC) &_patRoon_specDistMatrix, 2},
     {"_patRoon_loadEICIntensities", (DL_FUNC) &_patRoon_loadEICIntensities, 3},
     {"_patRoon_loadEICs", (DL_FUNC) &_patRoon_loadEICs, 3},
+    {"_patRoon_binSpecCPP", (DL_FUNC) &_patRoon_binSpecCPP, 4},
+    {"_patRoon_calcSpecSimularity", (DL_FUNC) &_patRoon_calcSpecSimularity, 7},
     {NULL, NULL, 0}
 };
 
