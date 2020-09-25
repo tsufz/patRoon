@@ -13,8 +13,8 @@ writeFeatureXML <- function(featList, out) {
     invisible(.Call(`_patRoon_writeFeatureXML`, featList, out))
 }
 
-specDistMatrix <- function(specList, method, shift, mzWeight, intWeight, mzWindow) {
-    .Call(`_patRoon_specDistMatrix`, specList, method, shift, mzWeight, intWeight, mzWindow)
+specDistMatrix <- function(specList, method, shift, precMZs, mzWeight, intWeight, mzWindow) {
+    .Call(`_patRoon_specDistMatrix`, specList, method, shift, precMZs, mzWeight, intWeight, mzWindow)
 }
 
 loadEICIntensities <- function(spectra, featList, rtWindow) {
