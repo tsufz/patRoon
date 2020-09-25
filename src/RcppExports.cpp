@@ -40,14 +40,18 @@ BEGIN_RCPP
 END_RCPP
 }
 // specDistMatrix
-Rcpp::NumericMatrix specDistMatrix(Rcpp::List specList, Rcpp::Function cb);
-RcppExport SEXP _patRoon_specDistMatrix(SEXP specListSEXP, SEXP cbSEXP) {
+Rcpp::NumericMatrix specDistMatrix(Rcpp::List specList, Rcpp::CharacterVector method, Rcpp::CharacterVector shift, Rcpp::NumericVector mzWeight, Rcpp::NumericVector intWeight, Rcpp::NumericVector mzWindow);
+RcppExport SEXP _patRoon_specDistMatrix(SEXP specListSEXP, SEXP methodSEXP, SEXP shiftSEXP, SEXP mzWeightSEXP, SEXP intWeightSEXP, SEXP mzWindowSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< Rcpp::List >::type specList(specListSEXP);
-    Rcpp::traits::input_parameter< Rcpp::Function >::type cb(cbSEXP);
-    rcpp_result_gen = Rcpp::wrap(specDistMatrix(specList, cb));
+    Rcpp::traits::input_parameter< Rcpp::CharacterVector >::type method(methodSEXP);
+    Rcpp::traits::input_parameter< Rcpp::CharacterVector >::type shift(shiftSEXP);
+    Rcpp::traits::input_parameter< Rcpp::NumericVector >::type mzWeight(mzWeightSEXP);
+    Rcpp::traits::input_parameter< Rcpp::NumericVector >::type intWeight(intWeightSEXP);
+    Rcpp::traits::input_parameter< Rcpp::NumericVector >::type mzWindow(mzWindowSEXP);
+    rcpp_result_gen = Rcpp::wrap(specDistMatrix(specList, method, shift, mzWeight, intWeight, mzWindow));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -92,8 +96,8 @@ BEGIN_RCPP
 END_RCPP
 }
 // calcSpecSimularity
-Rcpp::NumericVector calcSpecSimularity(Rcpp::DataFrame sp1, Rcpp::DataFrame sp2, Rcpp::CharacterVector method, Rcpp::CharacterVector shift, Rcpp::NumericVector mzWindow, Rcpp::NumericVector mzWeight, Rcpp::NumericVector intWeight);
-RcppExport SEXP _patRoon_calcSpecSimularity(SEXP sp1SEXP, SEXP sp2SEXP, SEXP methodSEXP, SEXP shiftSEXP, SEXP mzWindowSEXP, SEXP mzWeightSEXP, SEXP intWeightSEXP) {
+Rcpp::NumericVector calcSpecSimularity(Rcpp::DataFrame sp1, Rcpp::DataFrame sp2, Rcpp::CharacterVector method, Rcpp::CharacterVector shift, Rcpp::NumericVector precDiff, Rcpp::NumericVector mzWeight, Rcpp::NumericVector intWeight, Rcpp::NumericVector mzWindow);
+RcppExport SEXP _patRoon_calcSpecSimularity(SEXP sp1SEXP, SEXP sp2SEXP, SEXP methodSEXP, SEXP shiftSEXP, SEXP precDiffSEXP, SEXP mzWeightSEXP, SEXP intWeightSEXP, SEXP mzWindowSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -101,10 +105,11 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< Rcpp::DataFrame >::type sp2(sp2SEXP);
     Rcpp::traits::input_parameter< Rcpp::CharacterVector >::type method(methodSEXP);
     Rcpp::traits::input_parameter< Rcpp::CharacterVector >::type shift(shiftSEXP);
-    Rcpp::traits::input_parameter< Rcpp::NumericVector >::type mzWindow(mzWindowSEXP);
+    Rcpp::traits::input_parameter< Rcpp::NumericVector >::type precDiff(precDiffSEXP);
     Rcpp::traits::input_parameter< Rcpp::NumericVector >::type mzWeight(mzWeightSEXP);
     Rcpp::traits::input_parameter< Rcpp::NumericVector >::type intWeight(intWeightSEXP);
-    rcpp_result_gen = Rcpp::wrap(calcSpecSimularity(sp1, sp2, method, shift, mzWindow, mzWeight, intWeight));
+    Rcpp::traits::input_parameter< Rcpp::NumericVector >::type mzWindow(mzWindowSEXP);
+    rcpp_result_gen = Rcpp::wrap(calcSpecSimularity(sp1, sp2, method, shift, precDiff, mzWeight, intWeight, mzWindow));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -113,11 +118,11 @@ static const R_CallMethodDef CallEntries[] = {
     {"_patRoon_parseFeatureXMLFile", (DL_FUNC) &_patRoon_parseFeatureXMLFile, 1},
     {"_patRoon_parseFeatConsXMLFile", (DL_FUNC) &_patRoon_parseFeatConsXMLFile, 2},
     {"_patRoon_writeFeatureXML", (DL_FUNC) &_patRoon_writeFeatureXML, 2},
-    {"_patRoon_specDistMatrix", (DL_FUNC) &_patRoon_specDistMatrix, 2},
+    {"_patRoon_specDistMatrix", (DL_FUNC) &_patRoon_specDistMatrix, 6},
     {"_patRoon_loadEICIntensities", (DL_FUNC) &_patRoon_loadEICIntensities, 3},
     {"_patRoon_loadEICs", (DL_FUNC) &_patRoon_loadEICs, 3},
     {"_patRoon_binSpecCPP", (DL_FUNC) &_patRoon_binSpecCPP, 4},
-    {"_patRoon_calcSpecSimularity", (DL_FUNC) &_patRoon_calcSpecSimularity, 7},
+    {"_patRoon_calcSpecSimularity", (DL_FUNC) &_patRoon_calcSpecSimularity, 8},
     {NULL, NULL, 0}
 };
 
