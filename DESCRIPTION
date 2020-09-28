@@ -132,6 +132,7 @@ Collate:
     'RcppExports.R'
     'TP.R'
     'TP-biotransformer.R'
+    'TP-components.R'
     'TP-logic.R'
     'utils-adduct.R'
     'adduct.R'
