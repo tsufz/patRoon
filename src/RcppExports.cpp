@@ -96,9 +96,9 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// calcSpecSimularity
-Rcpp::NumericVector calcSpecSimularity(Rcpp::DataFrame sp1, Rcpp::DataFrame sp2, Rcpp::CharacterVector method, Rcpp::CharacterVector shift, Rcpp::NumericVector precDiff, Rcpp::NumericVector mzWeight, Rcpp::NumericVector intWeight, Rcpp::NumericVector mzWindow);
-RcppExport SEXP _patRoon_calcSpecSimularity(SEXP sp1SEXP, SEXP sp2SEXP, SEXP methodSEXP, SEXP shiftSEXP, SEXP precDiffSEXP, SEXP mzWeightSEXP, SEXP intWeightSEXP, SEXP mzWindowSEXP) {
+// calcSpecSimilarity
+Rcpp::NumericVector calcSpecSimilarity(Rcpp::DataFrame sp1, Rcpp::DataFrame sp2, Rcpp::CharacterVector method, Rcpp::CharacterVector shift, Rcpp::NumericVector precDiff, Rcpp::NumericVector mzWeight, Rcpp::NumericVector intWeight, Rcpp::NumericVector mzWindow);
+RcppExport SEXP _patRoon_calcSpecSimilarity(SEXP sp1SEXP, SEXP sp2SEXP, SEXP methodSEXP, SEXP shiftSEXP, SEXP precDiffSEXP, SEXP mzWeightSEXP, SEXP intWeightSEXP, SEXP mzWindowSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -110,7 +110,7 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< Rcpp::NumericVector >::type mzWeight(mzWeightSEXP);
     Rcpp::traits::input_parameter< Rcpp::NumericVector >::type intWeight(intWeightSEXP);
     Rcpp::traits::input_parameter< Rcpp::NumericVector >::type mzWindow(mzWindowSEXP);
-    rcpp_result_gen = Rcpp::wrap(calcSpecSimularity(sp1, sp2, method, shift, precDiff, mzWeight, intWeight, mzWindow));
+    rcpp_result_gen = Rcpp::wrap(calcSpecSimilarity(sp1, sp2, method, shift, precDiff, mzWeight, intWeight, mzWindow));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -123,7 +123,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_patRoon_loadEICIntensities", (DL_FUNC) &_patRoon_loadEICIntensities, 3},
     {"_patRoon_loadEICs", (DL_FUNC) &_patRoon_loadEICs, 3},
     {"_patRoon_binSpecCPP", (DL_FUNC) &_patRoon_binSpecCPP, 4},
-    {"_patRoon_calcSpecSimularity", (DL_FUNC) &_patRoon_calcSpecSimularity, 8},
+    {"_patRoon_calcSpecSimilarity", (DL_FUNC) &_patRoon_calcSpecSimilarity, 8},
     {NULL, NULL, 0}
 };
 
