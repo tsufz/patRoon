@@ -250,7 +250,7 @@ please refer to the linked method documentation for each generic.
 \code{plotSilhouettes} plots silhouette widths to evaluate the desired cluster size.
 
 \itemize{
-    \item Methods are defined for: \code{\link[=plotSilhouettes,componentsClust-method]{componentsClust}}; \code{\link[=plotSilhouettes,componentsIntClust-method]{componentsIntClust}}; \code{\link[=plotSilhouettes,compoundsCluster-method]{compoundsCluster}}.
+    \item Methods are defined for: \code{\link[=plotSilhouettes,componentsClust-method]{componentsClust}}; \code{\link[=plotSilhouettes,componentsClustSet-method]{componentsClustSet}}; \code{\link[=plotSilhouettes,componentsIntClust-method]{componentsIntClust}}; \code{\link[=plotSilhouettes,compoundsCluster-method]{compoundsCluster}}.
 }
 
 \code{plotSpec} plots a (annotated) spectrum.
@@ -292,13 +292,13 @@ please refer to the linked method documentation for each generic.
 \code{treeCut} Manually cut a cluster.
 
 \itemize{
-    \item Methods are defined for: \code{\link[=treeCut,componentsClust-method]{componentsClust}}; \code{\link[=treeCut,compoundsCluster-method]{compoundsCluster}}.
+    \item Methods are defined for: \code{\link[=treeCut,componentsClust-method]{componentsClust}}; \code{\link[=treeCut,componentsClustSet-method]{componentsClustSet}}; \code{\link[=treeCut,compoundsCluster-method]{compoundsCluster}}.
 }
 
 \code{treeCutDynamic} Automatically cut a cluster.
 
 \itemize{
-    \item Methods are defined for: \code{\link[=treeCutDynamic,componentsClust-method]{componentsClust}}; \code{\link[=treeCutDynamic,compoundsCluster-method]{compoundsCluster}}.
+    \item Methods are defined for: \code{\link[=treeCutDynamic,componentsClust-method]{componentsClust}}; \code{\link[=treeCutDynamic,componentsClustSet-method]{componentsClustSet}}; \code{\link[=treeCutDynamic,compoundsCluster-method]{compoundsCluster}}.
 }
 }
 \section{Other generics}{
@@ -357,7 +357,7 @@ please refer to the linked method documentation for each generic.
  \code{plot} Generates a plot for an object.
 
 \itemize{
-    \item Methods are defined for: \code{\link[=plot,componentsClust,ANY-method]{componentsClust,ANY}}; \code{\link[=plot,componentsIntClust,ANY-method]{componentsIntClust,ANY}}; \code{\link[=plot,compoundsCluster,ANY-method]{compoundsCluster,ANY}}; \code{\link[=plot,featureGroups,ANY-method]{featureGroups,ANY}}; \code{\link[=plot,featureGroupsComparison,ANY-method]{featureGroupsComparison,ANY}}; \code{\link[=plot,optimizationResult,ANY-method]{optimizationResult,ANY}}.
+    \item Methods are defined for: \code{\link[=plot,componentsClust,ANY-method]{componentsClust,ANY}}; \code{\link[=plot,componentsClustSet,ANY-method]{componentsClustSet,ANY}}; \code{\link[=plot,componentsIntClust,ANY-method]{componentsIntClust,ANY}}; \code{\link[=plot,compoundsCluster,ANY-method]{compoundsCluster,ANY}}; \code{\link[=plot,featureGroups,ANY-method]{featureGroups,ANY}}; \code{\link[=plot,featureGroupsComparison,ANY-method]{featureGroupsComparison,ANY}}; \code{\link[=plot,optimizationResult,ANY-method]{optimizationResult,ANY}}.
 }
 
  \code{show} Prints information about this object.
