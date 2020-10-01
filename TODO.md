@@ -102,6 +102,8 @@
 - fix empty MS(MS) peaklists if unavailable during merging sets
 - use neutral_formula for annotated similarity calculation for formulas
 - finish new minMSMSPeaks filter (apply always after averaging?)
+- log2fc: median also possible?
+- plotVolcano: also take thresholds into account for plotting, move legend outside graph
 
 
 ## TPs
