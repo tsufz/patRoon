@@ -2,13 +2,14 @@
 
 * **New functionality**
     - The `as.data.table()` method for `featureGroups` now supports normalization of intensities through the `normFunc` argument.
+    - The `as.data.table()` method for `featureGroups` now supports specifying a different averaging function through the `averageFunc` argument.
 * **Major changes**:
     - the `precursor` argument to the `plotSpec()`, `annotatedSpectrum()` and `plotScores()` methods for `formulas` now expects the neutral formula instead of the ionized formula. This change was necessary to select precursors for sets with different polarities. This is also in general more consistent with compound annotations.
     - The behavior of the `filter()` method for `MSPeakLists` was slightly changed. Prior to this change, the analysis specific peak lists were first filtered, these lists were then averaged to regenerate feature group peak lists and finally the updated group peak lists were also filtered. The latter filter step was removed, since this may result in subtle bugs after e.g. subsetting.
     - The methodology of `plotSpec()` to automatically calculate the space necessary for formula annotation texts and candidate structures was improved. Annotation texts are now automatically resized if there is insufficient space, and the maximum size and resolution for candidate structures can be controlled with the `maxMolSize`/`molRes` parameters.
 * Minor changes
     - `show()` methods now print class inheritance tree
-* Intensity clusters now use `fastcluster` for hierarchical clustering
+    - Intensity clusters now use `fastcluster` for hierarchical clustering
 
 
 

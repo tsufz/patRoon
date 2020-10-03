@@ -7,6 +7,8 @@
     - Agilent .d is also a directory?
     - Support OpenMS vendor conversion? (eg thermo)
 - runWithoutCache? runWithCacheMode()? shortcut to withr::with_options(patRoon.cache.mode=...)
+- allow specifying average function in other places where as.data.table() is used (eg clustering, plotting etc)
+
 
 ## AutoID
 
@@ -172,6 +174,7 @@
 - Naming
     - More generic naming for predict etc to accommodate other sources for TPs
     - consistentency for precursor/parent/suspect
+- plotVolcano: also take thresholds into account for plotting, move legend outside graph
 
 
 ## features

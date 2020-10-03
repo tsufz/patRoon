@@ -11,7 +11,7 @@ setGeneric("removeAnalyses", function(fGroups, indices) standardGeneric("removeA
 setGeneric("removeGroups", function(fGroups, indices) standardGeneric("removeGroups"))
 setGeneric("removeEmptyGroups", function(fGroups) standardGeneric("removeEmptyGroups"))
 setGeneric("removeEmptyAnalyses", function(fGroups) standardGeneric("removeEmptyAnalyses"))
-setGeneric("averageGroups", function(fGroups, areas = FALSE) standardGeneric("averageGroups"))
+setGeneric("averageGroups", function(fGroups, areas = FALSE, func = mean) standardGeneric("averageGroups"))
 setGeneric("updateFeatIndex", function(fGroups) standardGeneric("updateFeatIndex"))
 setGeneric("export", function(fGroups, type, out) standardGeneric("export"))
 setGeneric("unique", function(x, incomparables = FALSE, ...) standardGeneric("unique"))
