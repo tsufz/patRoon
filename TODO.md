@@ -175,6 +175,7 @@
     - More generic naming for predict etc to accommodate other sources for TPs
     - consistentency for precursor/parent/suspect
 - plotVolcano: move legend outside graph
+- more logic reactions?
 
 
 ## features
