@@ -101,6 +101,7 @@
     - support recursive screening? or throw error otherwise
 - fix empty MS(MS) peaklists if unavailable during merging sets
 - use neutral_formula for annotated similarity calculation for formulas
+- finish new minMSMSPeaks filter (apply always after averaging?)
 
 
 ## features
