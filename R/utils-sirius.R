@@ -142,7 +142,7 @@ getSiriusCommand <- function(precursorMZ, MSPList, MSMSPList, profile, adduct, p
 runSIRIUS <- function(precursorMZs, MSPLists, MSMSPLists, resNames, profile, adduct, ppmMax, elements,
                       database, noise, cores, withFingerID, fingerIDDatabase, topMost,
                       extraOptsGeneral, extraOptsFormula, verbose, isPre44,
-                      processFunc, processArgs, SIRBatchSize)
+                      processFunc, processArgs, splitBatches)
 {
     ionization <- as.character(adduct, format = "sirius")
     cmpName <- "unknownCompound"
@@ -178,17 +178,19 @@ runSIRIUS <- function(precursorMZs, MSPLists, MSMSPLists, resNames, profile, add
         if (withFingerID)
             args <- c(args, "structure", "--database", fingerIDDatabase)
     }
+
+    batchn <- 1
+    if (splitBatches) 
+    {
+        mpm <- getOption("patRoon.multiProcMethod", "classic")
+        batchn <- if (mpm == "classic") getOption("patRoon.maxProcAmount") else future::nbrOfWorkers()
+    }
+    batches <- splitInNBatches(seq_along(precursorMZs), batchn)
     
-    if (SIRBatchSize == 0)
-        batches <- list(seq_along(precursorMZs))
-    else
-        batches <- splitInBatches(seq_along(precursorMZs), SIRBatchSize)
-    
-    command <- getCommandWithOptPath(getSiriusBin(), "SIRIUS")
     cmdQueue <- lapply(seq_along(batches), function(bi)
     {
         batch <- batches[[bi]]
-        return(list(command = command, precMZs = precursorMZs[batch], MSPL = MSPLists[batch], MSMSPL = MSMSPLists[batch],
+        return(list(precMZs = precursorMZs[batch], MSPL = MSPLists[batch], MSMSPL = MSMSPLists[batch],
                     logFile = paste0("sirius-batch_", bi, ".txt")))
     })
     
@@ -204,6 +206,8 @@ runSIRIUS <- function(precursorMZs, MSPLists, MSMSPLists, resNames, profile, add
         return(res)
     }, prepareHandler = function(cmd)
     {
+        command <- getCommandWithOptPath(getSiriusBin(), "SIRIUS")
+        
         inPath <- tempfile("sirius_in")
         outPath <- tempfile("sirius_out")
         # unlink(outPath, TRUE) # start with fresh output directory (otherwise previous results are combined)
@@ -219,7 +223,7 @@ runSIRIUS <- function(precursorMZs, MSPLists, MSMSPLists, resNames, profile, add
         
         bArgs <- if (isPre44) c(args, "-o", outPath, inPath) else c("-i", inPath, "-o", outPath, args)
         
-        return(c(cmd, list(args = bArgs, outPath = outPath, msFNames = msFNames)))
+        return(c(cmd, list(command = command, args = bArgs, outPath = outPath, msFNames = msFNames)))
     }, printOutput = verbose && singular, printError = verbose && singular,
     showProgress = !singular, logSubDir = paste0("sirius_", if (withFingerID) "compounds" else "formulas"))
 
@@ -229,7 +233,7 @@ runSIRIUS <- function(precursorMZs, MSPLists, MSMSPLists, resNames, profile, add
 doSIRIUS <- function(allGNames, MSPeakLists, doFeatures, profile, adduct, relMzDev, elements,
                      database, noise, cores, withFingerID, fingerIDDatabase, topMost,
                      extraOptsGeneral, extraOptsFormula, verbose, cacheName, processFunc, processArgs,
-                     SIRBatchSize)
+                     splitBatches)
 {
     isPre44 <- isSIRIUSPre44()
     
@@ -293,7 +297,7 @@ doSIRIUS <- function(allGNames, MSPeakLists, doFeatures, profile, adduct, relMzD
             
             allResults <- runSIRIUS(plmzs, mspls, msmspls, flPLMeta[cached == FALSE]$name, profile, adduct,
                                     relMzDev, elements, database, noise, cores, withFingerID, fingerIDDatabase, topMost,
-                                    extraOptsGeneral, extraOptsFormula, verbose, isPre44, processFunc, processArgs, SIRBatchSize)
+                                    extraOptsGeneral, extraOptsFormula, verbose, isPre44, processFunc, processArgs, splitBatches)
         }
         else
             allResults <- list()
