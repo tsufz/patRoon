@@ -123,6 +123,7 @@
     - allow usage of compoundsSet (if not already working)
     - allow fGroupsScreening for input
     - convertToMFDB: no need to calculate InChIs etc?
+    - filter on stability/persistence/toxicity of TP?
 - metabolic logic
     - more logic reactions?
     - make configurable?
