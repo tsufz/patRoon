@@ -1,3 +1,8 @@
+# patRoon 2.1
+
+- More consistent installation suggestion message when an R package from GitHub is found missing
+
+
 # patRoon 2.0
 
 This release adds a significant amount of new functionality and changes. Please see the updated Handbook and sections below for more information.
