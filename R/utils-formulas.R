@@ -167,6 +167,12 @@ subscriptFormulaHTML <- function(formulas)
     return(ret)
 }
 
+verifyFormulas <- function(formulas)
+{
+    data("isotopes", package = "enviPat", envir = environment())
+    formulas[is.na(formulas)] <- "" # check_chemform() doesn't handle NAs
+    return(!enviPat::check_chemform(isotopes, formulas)$warning)
+}
 
 averageFormulas <- function(formulas)
 {
